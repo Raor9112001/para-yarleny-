@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para Yarleny Medina 💜</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fff0f6, #e1bee7, #ce93d8);
+      color: #6a0572;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 50px 20px 20px;
+      background: linear-gradient(to right, #ff99cc, #cc66ff);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .contador {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    section {
+      padding: 30px 15px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .poema {
+      background: #ffe6f2;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      white-space: pre-wrap;
+      font-size: 1em;
+      line-height: 1.7;
+      margin-top: 15px;
+      display: none;
+      text-align: justify;
+    }
+
+    .boton-poema {
+      background-color: #cc66ff;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: block;
+      margin: 0 auto 15px auto;
+      max-width: 300px;
+    }
+
+    .boton-poema:hover {
+      background-color: #b347cc;
+    }
+
+    .audio-container {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .slider-container {
+      position: relative;
+      max-width: 100%;
+      margin: 0 auto 40px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      text-align: center;
+    }
+
+    .slide img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: contain;
+      border-radius: 15px;
+      background-color: #fff0f6;
+    }
+
+    .slider-buttons {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .slider-buttons button {
+      background-color: #cc66ff;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .slider-buttons button:hover {
+      background-color: #aa33cc;
+    }
+
+    .mensaje-sorpresa {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .mensaje-sorpresa button {
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1em;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .mensaje {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #6a0572;
+      min-height: 2em;
+    }
+
+    .emociones {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .emociones h2 {
+      font-size: 1.6em;
+      margin-bottom: 20px;
+    }
+
+    .emociones button {
+      border: none;
+      padding: 10px 16px;
+      margin: 6px;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      color: white;
+      transition: transform 0.2s ease;
+    }
+
+    .emociones button:hover {
+      transform: scale(1.05);
+    }
+
+    .emociones #mensajeEmocion {
+      margin-top: 20px;
+      font-size: 1em;
+      padding: 18px;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 20px auto 0;
+      color: #6a0572;
+      white-space: pre-line;
+    }
+
+    .triste { background-color: #b39ddb; }
+    .feliz { background-color: #4db6ac; }
+    .molesta { background-color: #f48fb1; }
+    .cansada { background-color: #90caf9; }
+    .frustrada { background-color: #ffb74d; }
+    .ansiosa { background-color: #a1887f; }
+    .extrana { background-color: #ce93d8; }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: transparent;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .stars span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: blink 2s infinite ease-in-out alternate;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    .hearts-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -30px;
+      font-size: 20px;
+      color: rgba(204, 102, 255, 0.7);
+      animation-name: floatUp;
+      animation-timing-function: ease-out;
+      animation-iteration-count: 1;
+      user-select: none;
+      filter: drop-shadow(0 0 1px #aa33cc);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    footer {
+      padding: 30px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      .contador {
+        font-size: 1em;
+      }
+      .boton-poema, .mensaje-sorpresa button {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
+      .slide img {
+        max-height: 220px;
+      }
+      .poema {
+        font-size: 0.95em;
+      }
+      .emociones button {
+        padding: 8px 14px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  <div class="hearts-container" id="hearts-container"></div>
+
+  <header>
+    <h1>Para Yarleny, Te amo 💜</h1>
+    <div class="contador" id="contador"></div>
+  </header>
+
+  <section>
+    <h2 style="text-align:center;">Te la dedico 🎶</h2>
+    <div class="audio-container">
+      <audio controls>
+        <source src="cancion.mp3" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center;">Nuestro amor mes a mes 💖</h2>
+    <div class="slider-container">
+      <div class="slider" id="slider">
+        <div class="slide"><img src="foto1.jpg" alt="Mes 1" /></div>
+        <div class="slide"><img src="foto2.jpg" alt="Mes 2" /></div>
+        <div class="slide"><img src="foto3.jpg" alt="Mes 3" /></div>
+        <div class="slide"><img src="foto4.jpg" alt="Mes 4" /></div>
+        <div class="slide"><img src="foto5.jpg" alt="Mes 5" /></div>
+        <div class="slide"><img src="foto6.jpg" alt="Mes 6" /></div>
+        <div class="slide"><img src="foto7.jpg" alt="Mes 7" /></div>
+        <div class="slide"><img src="foto8.jpg" alt="Mes 8" /></div>
+        <div class="slide"><img src="foto9.jpg" alt="Mes 9" /></div>
+      </div>
+    </div>
+    <div class="slider-buttons">
+      <button onclick="moverSlider(-1)">⬅</button>
+      <button onclick="moverSlider(1)">➡</button>
+    </div>
+  </section>
+
+  <section class="mensaje-sorpresa">
+    <h2>Mensaje Sorpresa 💌</h2>
+    <button onclick="mostrarMensaje()">Haz clic aquí</button>
+    <div class="mensaje" id="mensaje"></div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center;">Nuestra Historia siempre se resumirá así ✨</h2>
+    <button class="boton-poema" onclick="togglePoema()">💖</button>
+    <div class="poema" id="poema">Dos cursillistas, con el alma encendida,<br>
+  nos encontramos en una convivencia compartida.<br>
+  Hablamos un tiempo, en plan de “amigos”,<br>
+  conversaciones largas, sin más testigos.<br><br>
+
+  Y un día, entre olas y brisa salada,<br>
+  nos vimos en una playa de La Guaira encantada,<br>
+  con un grupo de panas, risa y sol,<br>
+  el destino ya tejía su hilo de amor.<br><br>
+
+  Luego vinieron las noches más claras,<br>
+  una Ultreya que el alma prepara,<br>
+  y en Birritas, entre baile y música,<br>
+  la chispa se avivó, aumentando la atracción de los dos.<br><br>
+
+  Un día en el cine, tuvimos nuestro primer beso,<br>
+  ambos sabíamos adónde se dirigía esto.<br>
+  El 15 de octubre de 2024, nuestra relación se formalizó,<br>
+  y nuestro amor comenzó, uniendo nuestros corazones de la mano de Dios.<br><br>
+
+  Desde entonces, tus ojos me cautivan,<br>
+  con la forma en que me miran.<br>
+  Me miras tan dulce que el mundo se detiene,<br>
+  como si el tiempo quisiera parar,<br>
+  para verte reír, para verte amar.<br><br>
+
+  Eres ternura que cuida y consuela,<br>
+  la que con su mano acaricia y revela<br>
+  que el amor se demuestra sin prisa ni voz,<br>
+  que a veces el cielo se llama estar juntos los dos.<br><br>
+
+  Me encanta tu risa tan libre, tan tuya,<br>
+  la niña que hay en ti, espero jamás se diluya.<br>
+  Tu amor por los gatos y los perros, tu encanto sutil,<br>
+  la forma en que el mundo se vuelve infantil...<br>
+  es muy noble y hermosa para mí.<br><br>
+
+  Eres coqueta, fresita y divertida,<br>
+  a la vez tan real, tan llena de vida.<br>
+  Llegaste a mi mundo con luz y razón,<br>
+  y sin darme cuenta, entraste al corazón.<br><br>
+
+  El Ávila guarda el recuerdo más puro:<br>
+  febrero nos puso más cerca del cielo.<br>
+  Subimos en nombre de todo lo hermoso,<br>
+  bajamos sabiendo que esto era eterno.<br><br>
+
+  Y en tu casa, entre risas y playa,<br>
+  las familias se dieron la mano sin falla.<br>
+  Nuestros padres, unidos sin duda ni error,<br>
+  como si el amor también fuera de honor.<br><br>
+
+  Yarleny, mi vida, contigo entendí,<br>
+  que el amor verdadero se escribe así:<br>
+  en miradas, en gestos, en días sencillos,<br>
+  en tus manías, tus pasos, tus brillos.<br><br>
+
+  Somos rivales en béisbol, quizás,<br>
+  pero en el alma jugamos en paz.<br>
+  Tiburones y Leones no importan aquí,<br>
+  porque somos un solo equipo: tú por mí y yo por ti.<br><br>
+
+  Hoy nos celebro a los dos, y celebro el camino,<br>
+  meses de amor, de fe, de destino.<br>
+  Contigo, la vida se viste mejor…<br>
+  Porque DE COLORES se vive el amor💖.
+    
+    </div>
+  </section>
+
+  <section class="emociones">
+    <h2>Cuando sientas algo... ven aquí ❤️</h2>
+    <button class="triste" onclick="mostrarEmocion('triste')">Triste</button>
+    <button class="feliz" onclick="mostrarEmocion('feliz')">Feliz</button>
+    <button class="molesta" onclick="mostrarEmocion('molesta')">Molesta</button>
+    <button class="cansada" onclick="mostrarEmocion('cansada')">Cansada</button>
+    <button class="frustrada" onclick="mostrarEmocion('frustrada')">Frustrada</button>
+    <button class="ansiosa" onclick="mostrarEmocion('ansiosa')">Ansiosa</button>
+    <button class="extrana" onclick="mostrarEmocion('extrana')">Te Extraño</button>
+    <div id="mensajeEmocion"></div>
+  </section>
+
+  <footer>
+    Hecho con todo mi amor para ti, Tu Caraquista jajaja 💜
+  </footer>
+
+  <script>
+    function actualizarContador() {
+      const inicio = new Date('2024-10-15T00:00:00');
+      const ahora = new Date();
+      const diff = ahora - inicio;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+      document.getElementById('contador').innerText = `${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos juntos 💖`;
+    }
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+
+    let currentIndex = 0;
+    function moverSlider(direccion) {
+      const slider = document.getElementById('slider');
+      const totalSlides = slider.children.length;
+      currentIndex += direccion;
+      if (currentIndex < 0) currentIndex = totalSlides - 1;
+      if (currentIndex >= totalSlides) currentIndex = 0;
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    const mensajes = [
+      "Eres mi persona favorita 💖",
+      "Tu risa ilumina mi día ✨",
+      "Gracias por existir 💝",
+      "Contigo todo tiene sentido 💫",
+      "Dios me bendijo contigo 💘"
+    ];
+
+    function mostrarMensaje() {
+      const mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
+      document.getElementById('mensaje').innerText = mensaje;
+    }
+
+    function togglePoema() {
+      const poemaDiv = document.getElementById('poema');
+      poemaDiv.style.display = poemaDiv.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function mostrarEmocion(tipo) {
+      const mensajeDiv = document.getElementById('mensajeEmocion');
+      const mensajes = {
+    triste: `💔 Triste
+
+Cuando estés triste, amor, quiero que recuerdes cuánto te valoro. No importa lo que esté pasando, siempre estoy dispuesto a escucharte, consolarte y abrazarte, aunque sea con palabras. Me duele cuando te duele, y me alegra cuando sonríes. Si las lágrimas te visitan, déjalas caer, pero no te quedes en la tristeza. Yo estaré orando por ti, sosteniéndote desde donde esté.
+
+“El Señor está cerca de los quebrantados de corazón, y salva a los de espíritu abatido.” — Salmo 34:18 🙏`,
+
+    feliz: `🌞 Feliz
+
+Me llena el alma saber que estás feliz. Cuando estás alegre, mi mundo también brilla. Tu sonrisa ilumina  y cuando ríes, siento que todo vale la pena. Nunca dejes de ser esa mujer hermosa, con alma de niña, que se maravilla con lo simple y hace mágico lo cotidiano. Celebro tu alegría, la comparto y la agradezco a Dios.
+
+“Alégrense siempre en el Señor. Insisto: ¡Alégrense!” — Filipenses 4:4 💜`,
+
+    molesta: `😠 Molesta
+
+Si estás molesta, respira… aquí estoy para escucharte, amarte y comprenderte. Nadie es perfecto, pero nuestro amor vale más que cualquier enojo. Quiero que siempre sientas que puedes expresarte conmigo, sin miedo.
+
+‘Soportaos unos a otros y perdonaos mutuamente si alguno tiene una queja contra otro. Así como el Señor os perdonó, perdonad también vosotros’ (Colosenses 3:13).`,
+
+    cansada: `💤 Cansada
+
+Si estás cansada, descansa en mí, aunque sea a través de este mensaje. Te prometo que siempre seré un lugar seguro para ti. Tú que cuidas a todos, también mereces que te cuiden. A veces lo más valiente es detenerse. Dios también descansó, y tú tienes derecho a soltar y respirar. Si pudiera, te abrazaría ahora mismo y te diría que estoy aquí para levantarte cuando no tengas fuerzas.
+
+“Vengan a mí todos los que están cansados y cargados, y yo les daré descanso.” — Mateo 11:28 🌿`,
+
+    frustrada: `😣 Frustrada
+
+Mi amor, si las cosas no están saliendo como esperabas, no significa que estés fallando. Eres valiente, capaz, y cada paso que das incluso cuando te equivocas te está formando. Recuerda cuánto admiro tu pasión por lo que haces, lo mucho que brillas incluso cuando sientes que estás cayendo. Tienes un propósito más grande que cualquier error. Y yo estaré aquí siempre, creyendo en ti.
+
+“Todo lo puedo en Cristo que me fortalece.” — Filipenses 4:13 ✨`,
+
+    ansiosa: `😥 Ansiosa
+
+Amor, cuando la ansiedad te abrace, cierra los ojos, respira profundo y siente el amor de quienes te rodean. No estás sola. Yo oro por ti, camino contigo y Dios nos guía. Si tu mente corre, camina despacio conmigo. Si tu corazón se acelera, deja que el mío te acompañe en paz. Tu vida no está fuera de control, está en las manos del que nos une. Él te cuida, y yo también.
+
+“Echen toda su ansiedad sobre Él, porque Él cuida de ustedes.” — 1 Pedro 5:7 🕊`,
+
+    extrana: `💌 Me Extrañas
+
+Si me extrañas, cierra los ojos e imagina nuestras risas, nuestros abrazos, y todo lo hermoso que hemos vivido. Pero sobre todo, piensa en todo lo que aún nos falta construir juntos. Cada 'te amo' que nos espera, cada plan, cada viaje, cada noche tomados de la mano. Estamos hechos para durar, para crecer, para seguir juntos. Te amo hoy, y cada vez que me extrañes.
+
+“Grandes cosas ha hecho el Señor con nosotros, y estamos alegres.” — Salmo 126:3 🌸`
+  };
+      mensajeDiv.innerText = mensajes[tipo];
+      mensajeDiv.className = tipo; // para cambiar color con CSS
+    }
+
+    // Estrellas
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('span');
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 5}s`;
+      starsContainer.appendChild(star);
+    }
+
+    // Corazones animados simples
+    const heartsContainer = document.getElementById('hearts-container');
+
+    function crearCorazon() {
+      const heart = document.createElement('span');
+      heart.classList.add('heart');
+      heart.style.left = `${Math.random() * 100}%`;
+      const size = 15 + Math.random() * 15;
+      heart.style.fontSize = `${size}px`;
+      const duracion = 4000 + Math.random() * 4000;
+      heart.style.animationDuration = duracion + 'ms';
+      heart.textContent = '♥';
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, duracion);
+    }
+
+    setInterval(crearCorazon, 300);
+  </script>
+</body>
+</html>
